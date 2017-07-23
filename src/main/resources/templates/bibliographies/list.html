@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title='Bibliographies : List')">
+		<title>Bibliographies : List</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<h1>Bibliographies : List</h1>
+			<div class="container">
+				<div class="pull-right">
+					<a href="form.html" th:href="@{/(form)}">Create Bibliography</a>
+				</div>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<td>ID</td>
+							<td>Author</td>
+							<td>Title</td>
+							<td>Year</td>
+							<td>Journal</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${bibliographies.empty}">
+							<td colspan="5"> No bibliographies.</td>
+						</tr>
+						<tr th:each="bibliography : ${bibliographies}">
+							<td th:text="${bibliography.id}">
+							    1
+							</td>
+							<td th:text="${bibliography.author}">
+							    No author
+							</td>	
+						    <td>
+						        <a th:text="${bibliography.title}" href="view.html" th:href="@{'/' + ${bibliography.id}}">
+							      No title
+							    </a>
+							</td>	
+							<td th:text="${bibliography.year}">
+							    No year
+							</td>	
+							<td th:text="${bibliography.journal}">
+							    No author
+							</td>							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

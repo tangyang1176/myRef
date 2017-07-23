@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title='Bibliographies : View')">
+		<title>Bibliographies : View</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<h1>Bibliographies : View</h1>
+			<div class="alert alert-success" th:if="${globalMessage}"
+				th:text="${globalMessage}">Some Success message</div>
+			<div class="pull-right">
+				<a th:href="@{/}" href="list.html"> Bibliographies </a>
+			</div>
+			<dl>
+				<dt>ID</dt>
+				<dd id="id" th:text="${bibliography.id}">123</dd> 
+				<dt>Author</dt>
+				<dd id="author" th:text="${bibliography.author}">No author</dd>
+				<dt>Title</dt>
+				<dd id="title" th:text="${bibliography.title}">No title</dd>
+				<dt>Year</dt>
+				<dd id="year" th:text="${bibliography.year}">No year</dd>
+			    <dt>Journal</dt>
+				<dd id="journal" th:text="${bibliography.journal}">No journal</dd>
+			</dl>
+			<div class="pull-left">
+				<a href="bibliographies" th:href="@{'/delete/' + ${bibliography.id}}">delete </a> |
+				<a href="form.html" th:href="@{'/modify/' + ${bibliography.id}}"> modify </a>
+			</div>
+		</div>
+	</body>
+</html>
